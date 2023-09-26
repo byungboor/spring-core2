@@ -30,7 +30,6 @@ public class CreateMemberService {
         return member;
     }
 
-    // TODO - 2 : @Cacheable 을 사용하여 getAllMembers() 메서드를 캐시한다. 단 이때 account.members 이름의 Cache 객체를 사용한다.
     @Cacheable(cacheNames = {"account.members"})
     public List<Member> getAllMembers() {
         System.out.println("Query : getAllMembers");
