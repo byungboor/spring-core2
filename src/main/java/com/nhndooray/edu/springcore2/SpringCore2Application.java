@@ -5,6 +5,7 @@ import com.nhndooray.edu.springcore2.repository.MemberRepository;
 import com.nhndooray.edu.springcore2.repository.PasswordRepository;
 import com.nhndooray.edu.springcore2.service.CreateMemberCommand;
 import com.nhndooray.edu.springcore2.service.CreateMemberService;
+import com.nhndooray.edu.springcore2.service.QueryMemberCommand;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.Cache;
@@ -23,27 +24,18 @@ public class SpringCore2Application {
         ApplicationContext ctxt = SpringApplication.run(SpringCore2Application.class, args);
         CreateMemberService service = ctxt.getBean("createMemberService", CreateMemberService.class);
 
+        // TODO - 0 : 전체 코드 설명. create, query, query
+        service.create(new CreateMemberCommand("byungboor", "password!@#123"));
         System.out.println("start --------------------------------------------");
-        service.getAllMembers();
-        service.getAllMembers();
-        service.getAllMembers();
+        service.getMember(new QueryMemberCommand("byungboor"));
+        service.getMember(new QueryMemberCommand("byungboor"));
         System.out.println("--------------------------------------------------");
 
         CacheManager cacheManager = ctxt.getBean("cacheManager", CacheManager.class);
-        System.out.println("CacheManager implementation class : " + cacheManager.getClass().getCanonicalName());
-
-        cacheManager.getCacheNames().stream()
-                .forEach(name -> System.out.println("cache name : " + name));
-        System.out.println("--------------------------------------------------");
-
-        // TODO - 01 : Cache 구현 클래스 확인
-        Cache cache = cacheManager.getCache("account.members");
-        System.out.println("Cache implementation class : " + cache.getClass().getCanonicalName());
-
+        Cache cache = cacheManager.getCache("member");
         ConcurrentMapCache concurrentMapCache = ConcurrentMapCache.class.cast(cache);
         ConcurrentMap<SimpleKey, List<Member>> map = ConcurrentMap.class.cast(concurrentMapCache.getNativeCache());
 
-        // TODO - 02 : 정보 확인
         System.out.println("Map size : " + map.size());
         map.entrySet().stream()
                 .forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));

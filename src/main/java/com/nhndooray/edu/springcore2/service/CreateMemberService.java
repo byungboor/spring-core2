@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,5 +35,12 @@ public class CreateMemberService {
     public List<Member> getAllMembers() {
         System.out.println("Query : getAllMembers");
         return memberRepository.findAll();
+    }
+
+    // TODO - 4 : keyGenerator 속성 설정
+    @Cacheable(cacheNames = "member", keyGenerator = "memberKeyGenerator")
+    public Optional<Member> getMember(QueryMemberCommand command){
+        System.out.println("Query : getMember");
+        return memberRepository.findByUserCode(command.userCode());
     }
 }
