@@ -30,17 +30,4 @@ public class CreateMemberService {
 
         return member;
     }
-
-    @Cacheable(cacheNames = {"account.members"})
-    public List<Member> getAllMembers() {
-        System.out.println("Query : getAllMembers");
-        return memberRepository.findAll();
-    }
-
-    // TODO - 4 : keyGenerator 속성 설정
-    @Cacheable(cacheNames = "member", keyGenerator = "memberKeyGenerator")
-    public Optional<Member> getMember(QueryMemberCommand command){
-        System.out.println("Query : getMember");
-        return memberRepository.findByUserCode(command.userCode());
-    }
 }

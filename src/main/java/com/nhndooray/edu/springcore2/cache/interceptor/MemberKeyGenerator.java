@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-// TODO - 1 : KeyGenerator 예제
 @Slf4j
 public class MemberKeyGenerator implements KeyGenerator {
 
@@ -28,7 +27,6 @@ public class MemberKeyGenerator implements KeyGenerator {
             QueryMemberCommand command = QueryMemberCommand.class.cast(params[0]);
             key = "member:user-code:" + command.userCode();
         } catch (Throwable th) {
-            // TODO - 2 : fallback 코드. params 는 위치는 항상 바뀔 수 있다.
             key = Arrays.stream(params)
                     .map(Object::toString)
                     .collect(Collectors.joining(":"));

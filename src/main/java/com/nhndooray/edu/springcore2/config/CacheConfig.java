@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CacheConfig {
 
-    // TODO - 3 : keyGenerator Spring Bean 설정.
     @Bean
     public KeyGenerator memberKeyGenerator() {
         return new MemberKeyGenerator();

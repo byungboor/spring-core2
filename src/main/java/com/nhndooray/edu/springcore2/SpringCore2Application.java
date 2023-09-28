@@ -6,6 +6,7 @@ import com.nhndooray.edu.springcore2.repository.PasswordRepository;
 import com.nhndooray.edu.springcore2.service.CreateMemberCommand;
 import com.nhndooray.edu.springcore2.service.CreateMemberService;
 import com.nhndooray.edu.springcore2.service.QueryMemberCommand;
+import com.nhndooray.edu.springcore2.service.QueryMemberService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.Cache;
@@ -22,25 +23,29 @@ public class SpringCore2Application {
 
     public static void main(String[] args) {
         ApplicationContext ctxt = SpringApplication.run(SpringCore2Application.class, args);
-        CreateMemberService service = ctxt.getBean("createMemberService", CreateMemberService.class);
+        CreateMemberService createMemberService = ctxt.getBean("createMemberService", CreateMemberService.class);
+        QueryMemberService queryMemberService = ctxt.getBean("queryMemberService", QueryMemberService.class);
 
-        // TODO - 0 : 전체 코드 설명. create, query, query
-        service.create(new CreateMemberCommand("byungboor", "password!@#123"));
+        createMemberService.create(new CreateMemberCommand("byungboor", "password!@#123"));
         System.out.println("start --------------------------------------------");
-        service.getMember(new QueryMemberCommand("byungboor"));
-        service.getMember(new QueryMemberCommand("byungboor"));
+        queryMemberService.getMember(new QueryMemberCommand("byungboor"));
+        queryMemberService.getMember(new QueryMemberCommand("byungboor"));
+        System.out.println("--------------------------------------------------");
+        queryMemberService.getMember(new QueryMemberCommand("not-found-usercode"));
+        queryMemberService.getMember(new QueryMemberCommand("not-found-usercode"));
+        System.out.println("--------------------------------------------------");
+        queryMemberService.getMember(new QueryMemberCommand(null));
+        queryMemberService.getMember(new QueryMemberCommand(null));
         System.out.println("--------------------------------------------------");
 
+        // TODO - 02 : 정상적으로 화면에 출력되는지 확인한다.
         CacheManager cacheManager = ctxt.getBean("cacheManager", CacheManager.class);
-        Cache cache = cacheManager.getCache("member");
-        ConcurrentMapCache concurrentMapCache = ConcurrentMapCache.class.cast(cache);
-        ConcurrentMap<SimpleKey, List<Member>> map = ConcurrentMap.class.cast(concurrentMapCache.getNativeCache());
+        Cache cache = cacheManager.getCache("members");
+        System.out.println(cache.get("member:user-code:byungboor").get().toString());
 
-        System.out.println("Map size : " + map.size());
-        map.entrySet().stream()
-                .forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));
+        cache = cacheManager.getCache("members:user-codes");
+        System.out.println(cache.get("member:user-code:byungboor").get().toString());
 
         System.out.println("end   --------------------------------------------");
     }
-
 }
