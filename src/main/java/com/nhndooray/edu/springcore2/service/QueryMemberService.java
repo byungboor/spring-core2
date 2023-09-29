@@ -23,7 +23,6 @@ public class QueryMemberService {
         return memberRepository.findAll();
     }
 
-    // TODO - 02 : check cache object names.
     @Transactional(readOnly = true)
     @Cacheable(cacheNames = {"members:user-codes", "members"}, condition = "#command.userCode != null", unless = "#result == null", keyGenerator = "memberKeyGenerator")
     public Optional<Member> getMember(QueryMemberCommand command) {

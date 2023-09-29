@@ -24,7 +24,6 @@ public class SpringCore2Application {
         queryMemberService.getMember(new QueryMemberCommand("byungboor"));
         System.out.println("--------------------------------------------------");
 
-        // TODO - 04 : check result
         CacheManager cacheManager = ctxt.getBean("cacheManager", CacheManager.class);
         System.out.println(cacheManager.getClass().getCanonicalName());
         Cache cache = cacheManager.getCache("members");
