@@ -30,7 +30,7 @@ public class QueryMemberService {
     //  - key 이름 생성은 MemberKeyGenerator 스프링 빈에 의존합니다.
     //  - 만약 QueryMemberCommand 파라미터의 userCode가 null 이면 캐시하지 않습니다.
     @Transactional(readOnly = true)
-    @Cacheable()
+    @Cacheable(cacheNames = {"members:user-codes", "members"}, condition = "#command.userCode != null", unless = "#result == null", keyGenerator = "memberKeyGenerator")
     public Optional<Member> getMember(QueryMemberCommand command) {
         System.out.println("Query : getMember");
         return memberRepository.findByUserCode(command.userCode());
