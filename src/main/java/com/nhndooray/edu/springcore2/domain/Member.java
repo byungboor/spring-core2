@@ -11,12 +11,15 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @ToString
 @Getter
 @Table("members")
-public class Member {
+// TODO - 05 : Serialize, Deserialize 를 위한 Serializable
+//  - 없으면 에러. (확인 해볼것.)
+public class Member implements Serializable {
 
     @Id
     @Column("member_id")

@@ -14,8 +14,9 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 import java.util.List;
 
-@EnableCaching
-@Configuration
+// TODO - 02 : disable CaffeineCache Configuration
+//@EnableCaching
+//@Configuration
 public class CacheConfig {
 
     @Bean
@@ -35,7 +36,6 @@ public class CacheConfig {
         return simpleCacheManager;
     }
 
-    // TODO - 02 : com.github.benmanes.caffeine.cache.Cache. NOT org.springframework.cache.Cache
     @Bean
     public Cache memberCache() {
         return Caffeine.newBuilder()
