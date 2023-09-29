@@ -33,5 +33,12 @@ public class SpringCore2Application {
         System.out.println(cache.get("member:user-code:byungboor").get().toString());
 
         System.out.println("end   --------------------------------------------");
+
+        System.out.println("stat  --------------------------------------------");
+        // TODO -01 : stats
+        com.github.benmanes.caffeine.cache.Cache caffeineCache = (com.github.benmanes.caffeine.cache.Cache) cache.getNativeCache();
+        System.out.println(caffeineCache.estimatedSize());
+        System.out.println(caffeineCache.stats().toString());
+        System.out.println("end   --------------------------------------------");
     }
 }

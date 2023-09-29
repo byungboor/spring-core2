@@ -23,7 +23,6 @@ public class CacheConfig {
         return new MemberKeyGenerator();
     }
 
-    // TODO - 02 : CacheManager
     @Bean
     public CacheManager cacheManager() {
 
@@ -36,7 +35,7 @@ public class CacheConfig {
         return simpleCacheManager;
     }
 
-    // TODO - 01 : Cache
+    // TODO - 02 : com.github.benmanes.caffeine.cache.Cache. NOT org.springframework.cache.Cache
     @Bean
     public Cache memberCache() {
         return Caffeine.newBuilder()
