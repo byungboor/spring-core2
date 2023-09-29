@@ -23,12 +23,7 @@ public class QueryMemberService {
         return memberRepository.findAll();
     }
 
-    // TODO - 01 :
-    //  - getMember() 메서드를 @Cacheable 을 사용하여 캐싱합니다.
-    //  - 저장할 Cache 객체의 이름은 'members:user-codes' 와 'members' 입니다.
-    //  - 이때 return 값이 null 이면 캐시하지 않습니다.
-    //  - key 이름 생성은 MemberKeyGenerator 스프링 빈에 의존합니다.
-    //  - 만약 QueryMemberCommand 파라미터의 userCode가 null 이면 캐시하지 않습니다.
+    // TODO - 02 : check cache object names.
     @Transactional(readOnly = true)
     @Cacheable(cacheNames = {"members:user-codes", "members"}, condition = "#command.userCode != null", unless = "#result == null", keyGenerator = "memberKeyGenerator")
     public Optional<Member> getMember(QueryMemberCommand command) {
