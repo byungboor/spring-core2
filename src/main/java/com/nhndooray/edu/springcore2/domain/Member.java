@@ -17,9 +17,8 @@ import java.time.LocalDateTime;
 @ToString
 @Getter
 @Table("members")
-// TODO - 05 : Serialize, Deserialize 를 위한 Serializable
-//  - 없으면 에러. (확인 해볼것.)
-public class Member implements Serializable {
+// TODO - 08 : GenericJackson2JsonRedisSerializer 을 사용하므로 Serialize 인터페이스가 필요없음.
+public class Member  {
 
     @Id
     @Column("member_id")

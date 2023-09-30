@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 import java.util.List;
 
-// TODO - 02 : disable CaffeineCache Configuration
 //@EnableCaching
 //@Configuration
 public class CacheConfig {

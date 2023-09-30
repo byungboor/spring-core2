@@ -6,11 +6,14 @@ import com.nhndooray.edu.springcore2.service.QueryMemberCommand;
 import com.nhndooray.edu.springcore2.service.QueryMemberService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
+// TODO - 04 : @ConfigurationProperties 와 @ConstructorBinding 을 사용하기 위한 property 스캔.
+@ConfigurationPropertiesScan
 public class SpringCore2Application {
 
     public static void main(String[] args) {
