@@ -12,7 +12,6 @@ import org.springframework.cache.CacheManager;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-// TODO - 04 : @ConfigurationProperties 와 @ConstructorBinding 을 사용하기 위한 property 스캔.
 @ConfigurationPropertiesScan
 public class SpringCore2Application {
 

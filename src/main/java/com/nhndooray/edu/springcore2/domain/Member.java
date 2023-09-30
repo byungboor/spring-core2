@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @ToString
 @Getter
 @Table("members")
-// TODO - 08 : GenericJackson2JsonRedisSerializer 을 사용하므로 Serialize 인터페이스가 필요없음.
 public class Member  {
 
     @Id

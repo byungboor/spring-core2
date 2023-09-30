@@ -35,7 +35,6 @@ public class RedisCacheConfig {
         return new MemberKeyGenerator();
     }
 
-    // TODO - 05 : JSON 데이터 변환을 위한 ObjectMapper 와 java.time 패키지 변환을 위한 JavaTimeModule 추가.
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -44,7 +43,6 @@ public class RedisCacheConfig {
         return objectMapper;
     }
 
-    // TODO - 06 : LettuceConnectionFactory 설정.
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
 
@@ -69,7 +67,6 @@ public class RedisCacheConfig {
         return new LettuceConnectionFactory(configuration, clientConfiguration);
     }
 
-    // TODO - 07 : cacheManager 설정.
     @Bean
     public CacheManager cacheManager() {
 

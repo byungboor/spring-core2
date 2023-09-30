@@ -9,7 +9,6 @@ import java.time.Duration;
 
 @Getter
 @ToString
-// TODO - 03 : custom property 를 저장하기 위한 프러퍼티 클래스.
 @ConfigurationProperties(prefix = "account.cache.redis")
 public class RedisCacheConfigProperties {
 
