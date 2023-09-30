@@ -14,17 +14,13 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 import java.util.List;
 
-//@EnableCaching
-//@Configuration
+
+@Configuration
 public class CacheConfig {
 
-    @Bean
-    public KeyGenerator memberKeyGenerator() {
-        return new MemberKeyGenerator();
-    }
 
     @Bean
-    public CacheManager cacheManager() {
+    public CacheManager caffeineCacheManager() {
 
         CaffeineCache membersCaffeineCache = new CaffeineCache("members", memberCache());
         CaffeineCache userCodeCaffeineCache = new CaffeineCache("members:user-codes", userCodeCache());

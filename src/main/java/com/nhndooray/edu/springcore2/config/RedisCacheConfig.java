@@ -29,12 +29,10 @@ import java.time.Duration;
 @EnableCaching
 @Configuration
 @RequiredArgsConstructor
-// TODO - 01 : CachingConfigurer 를 사용하여 캐시를 설정한다.
 public class RedisCacheConfig implements CachingConfigurer {
 
     private final RedisCacheConfigProperties properties;
 
-    // TODO - 01-1 : CachingConfigurer 를 사용하여 캐시를 설정한다.
     @Override
     public CacheErrorHandler errorHandler() {
         return new RedisCacheErrorHandler();
@@ -77,8 +75,8 @@ public class RedisCacheConfig implements CachingConfigurer {
         return new LettuceConnectionFactory(configuration, clientConfiguration);
     }
 
-    @Bean
-    public CacheManager cacheManager() {
+    @Bean("redisCacheManager")
+    public CacheManager redisCacheManager() {
 
         var keySerializationPair = RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer());
         var valueSerializationPair = RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer(objectMapper()));

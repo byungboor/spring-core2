@@ -5,7 +5,6 @@ import org.springframework.cache.interceptor.CacheErrorHandler;
 
 public class RedisCacheErrorHandler implements CacheErrorHandler {
 
-    // TODO - 02 : 구현
     @Override
     public void handleCacheGetError(RuntimeException exception, Cache cache, Object key) {
         exception.printStackTrace();
