@@ -17,7 +17,6 @@ public class SerializeTest {
         objectMapper.registerModule(new JavaTimeModule());
     }
 
-    // TODO - 01 : RedisSerializer 별 변환 결과.
     @Test
     public void test() {
         MemberValue member = new MemberValue(123123L, "byungboo.kim");

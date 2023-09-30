@@ -8,7 +8,10 @@ import io.lettuce.core.ClientOptions;
 import io.lettuce.core.SocketOptions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurer;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +29,16 @@ import java.time.Duration;
 @EnableCaching
 @Configuration
 @RequiredArgsConstructor
-public class RedisCacheConfig {
+// TODO - 01 : CachingConfigurer 를 사용하여 캐시를 설정한다.
+public class RedisCacheConfig implements CachingConfigurer {
 
     private final RedisCacheConfigProperties properties;
+
+    // TODO - 01-1 : CachingConfigurer 를 사용하여 캐시를 설정한다.
+    @Override
+    public CacheErrorHandler errorHandler() {
+        return new RedisCacheErrorHandler();
+    }
 
     @Bean
     public KeyGenerator memberKeyGenerator() {
