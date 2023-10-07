@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 public class CronExpressionTest01 {
 
-    // TODO - 06
     @Test
     public void testCronExpression() {
 

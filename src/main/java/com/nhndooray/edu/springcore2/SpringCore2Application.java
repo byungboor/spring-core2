@@ -15,11 +15,9 @@ public class SpringCore2Application {
         ApplicationContext ctxt = SpringApplication.run(SpringCore2Application.class, args);
     }
 
-
     @Bean
     public Object scheduledApplication() {
 
-        // TODO-02 : select bean to demo
         Object job = new ScheduledApplication01();
 //        Object job = new ScheduledApplication02();
 //        Object job = new ScheduledApplication03();

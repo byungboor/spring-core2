@@ -17,7 +17,6 @@ public class ScheduledApplication01 {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());
     }
 
-    // TODO - 03
     @Scheduled(initialDelay = 10000L, fixedDelay = 3000, timeUnit = TimeUnit.MILLISECONDS)
     public void printFixedDelay() throws InterruptedException {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());

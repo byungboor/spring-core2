@@ -18,7 +18,6 @@ public class ScheduledApplication03 {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());
     }
 
-    // TODO - 05
     @Scheduled(cron = EVERY_10_SECOND)
     public void printCron() throws InterruptedException {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());

@@ -14,11 +14,10 @@ public class ScheduledApplication02 {
 
 
     @PostConstruct
-    public void printConstructionTime(){
+    public void printConstructionTime() {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());
     }
 
-    // TODO - 04
     @Scheduled(initialDelay = 10L, fixedRate = 3L, timeUnit = TimeUnit.SECONDS)
     public void printFixedRate() throws InterruptedException {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());
