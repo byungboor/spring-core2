@@ -18,11 +18,6 @@ public class ScheduledApplication02 {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());
     }
 
-    // TODO - 02 :
-    //  condition
-    //      - fixedRate 의 경우
-    //      - single thread 인 경우
-    //      - fixedRate < execution time
     @Scheduled(initialDelay = 10L, fixedRate = 3L, timeUnit = TimeUnit.SECONDS)
     public void printFixedRate() throws InterruptedException {
         System.out.println("------------ " + LocalDateTime.now().format(dtf) + ", Thread Name : " + Thread.currentThread().getName());

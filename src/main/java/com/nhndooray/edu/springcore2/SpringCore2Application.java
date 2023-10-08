@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringCore2Application {
 
+    // TODO - 03 : 다음 main() 을 실행합니다.
     public static void main(String[] args) {
         ApplicationContext ctxt = SpringApplication.run(SpringCore2Application.class, args);
     }
@@ -18,8 +19,8 @@ public class SpringCore2Application {
     @Bean
     public Object scheduledApplication() {
 
-        Object job = new ScheduledApplication01();
-//        Object job = new ScheduledApplication02();
+//        Object job = new ScheduledApplication01();
+        Object job = new ScheduledApplication02();
 //        Object job = new ScheduledApplication03();
 
         return job;
