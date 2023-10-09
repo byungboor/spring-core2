@@ -20,12 +20,11 @@ public class CreateMemberService {
     private final MemberRepository memberRepository;
     private final PasswordRepository passwordRepository;
 
-    // TODO - 02 : @Async 애너테이션 적용
+    // TODO - 03 : AsyncConfig 에서 생성한 memberTaskExecutor 스프링 빈을 사용하여 create() 메서드를 비동기 처리한다.
     @Async
     @Transactional
-    public Member create(CreateMemberCommand command) {
+    public void create(CreateMemberCommand command) {
 
-        // TODO - 03 : 런타임시 Thread 이름을 확인
         System.out.println("------------------------      create method executed by : " + Thread.currentThread().getName());
 
         Member member = new Member(command.userCode());
@@ -35,7 +34,7 @@ public class CreateMemberService {
         passwordRepository.insert(password);
 
         System.out.println("------------------------      create method done");
-        return member;
+        return;
     }
 
     public List<Member> getAllMembers() {
