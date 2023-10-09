@@ -20,7 +20,6 @@ public class CreateMemberService {
     private final MemberRepository memberRepository;
     private final PasswordRepository passwordRepository;
 
-    // TODO - 03 : AsyncConfig 에서 생성한 memberTaskExecutor 스프링 빈을 사용하여 create() 메서드를 비동기 처리한다.
     @Async
     @Transactional
     public void create(CreateMemberCommand command) {
@@ -33,7 +32,10 @@ public class CreateMemberService {
         Password password = new Password(member, command.password());
         passwordRepository.insert(password);
 
-        System.out.println("------------------------      create method done");
+        // TODO - 04 : 고의로 에러 발생 및 실행
+        if (true)
+            throw new IllegalArgumentException("Error Arguments");
+
         return;
     }
 
