@@ -17,6 +17,9 @@ public class SpringCore2Application {
 
         service.create(new CreateMemberCommand("byungboo.kim", "qwerty!@#"));
 
+        // TODO - 04 : System.out.println 이 어떤 순서로 출력될까?
+        System.out.println("----------------------- finish. create()");
+
         ctxt.getBean("memberRepository", MemberRepository.class).findAll().stream().forEach(System.out::println);
         ctxt.getBean("passwordRepository", PasswordRepository.class).findAll().stream().forEach(System.out::println);
     }
