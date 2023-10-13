@@ -7,12 +7,12 @@ import org.springframework.util.Assert;
 
 @ToString
 @Getter
-public class CreateMemberEvent {
+// TODO - 01: extends AbstractEvent
+public class CreateMemberEvent extends AbstractEvent {
 
     private Long id;
     private String userCode;
 
-    // TODO - 01 : 이벤트 객체는 불변 클래스입니다. 이벤트 객체를 수정하여 중간에 데이터가 오염되면 곤란합니다.
     public CreateMemberEvent(Long id, String userCode) {
         Assert.notNull(id, "id can't be null");
         Assert.hasLength(userCode, "userCode can't be empty");

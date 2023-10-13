@@ -27,8 +27,7 @@ public class CreateMemberService {
         Password password = new Password(member, command.password());
         passwordRepository.insert(password);
 
-        // TODO - 04 : 주입받은 CreateMemberEventPublisher 스프링 빈의 publish 메서드를 사용하여 CreateMemberEvent 이벤트를 발송합니다.
-
+        publisher.publish(CreateMemberEvent.of(member));
 
         return member;
     }
