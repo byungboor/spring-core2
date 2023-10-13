@@ -7,7 +7,6 @@ import org.springframework.util.Assert;
 
 @ToString
 @Getter
-// TODO - 01: extends AbstractEvent
 public class CreateMemberEvent extends AbstractEvent {
 
     private Long id;
