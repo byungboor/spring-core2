@@ -9,23 +9,24 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Configuration
+// TODO - 01 : Single thread 조건으로 변경.
 public class SpringEventConfig {
 
-    @Bean(name = "applicationEventMulticaster")
-    public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
-        SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
-        eventMulticaster.setTaskExecutor(eventThreadPoolTaskExecutor());
-        eventMulticaster.setErrorHandler(new MemberEventErrorHandler());
-        return eventMulticaster;
-    }
-
-    @Bean
-    public TaskExecutor eventThreadPoolTaskExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setMaxPoolSize(10);
-        executor.setCorePoolSize(10);
-        executor.setQueueCapacity(30);
-        executor.setThreadNamePrefix("EVENT-THREAD-POOL-");
-        return executor;
-    }
+//    @Bean(name = "applicationEventMulticaster")
+//    public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
+//        SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
+//        eventMulticaster.setTaskExecutor(eventThreadPoolTaskExecutor());
+//        eventMulticaster.setErrorHandler(new MemberEventErrorHandler());
+//        return eventMulticaster;
+//    }
+//
+//    @Bean
+//    public TaskExecutor eventThreadPoolTaskExecutor() {
+//        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+//        executor.setMaxPoolSize(10);
+//        executor.setCorePoolSize(10);
+//        executor.setQueueCapacity(30);
+//        executor.setThreadNamePrefix("EVENT-THREAD-POOL-");
+//        return executor;
+//    }
 }

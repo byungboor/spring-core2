@@ -27,9 +27,10 @@ public class CreateMemberService {
         Password password = new Password(member, command.password());
         passwordRepository.insert(password);
 
+        // TODO - 02 : Check Logs
         System.out.println("Event Origin : [" + Thread.currentThread().getName() + "] , " + member);
         publisher.publish(CreateMemberEvent.of(member));
-
+        System.out.println("END Event Origin");
         return member;
     }
 
