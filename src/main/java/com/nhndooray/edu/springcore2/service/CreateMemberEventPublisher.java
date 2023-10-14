@@ -16,7 +16,6 @@ public class CreateMemberEventPublisher {
     public void publish(CreateMemberEvent createMemberEvent) {
 
         if (Objects.nonNull(createMemberEvent)) {
-            // TODO - 02
             System.out.println("Event Publisher : [" + Thread.currentThread().getName() + "] , " + createMemberEvent);
             publisher.publishEvent(createMemberEvent);
         }
