@@ -1,8 +1,6 @@
 package com.nhndooray.edu.springcore2.event;
 
 import lombok.Getter;
-
-// TODO - 01 : CreateMemberEvent 를 포함하는 예외
 @Getter
 public class MemberEventErrorException extends RuntimeException {
 

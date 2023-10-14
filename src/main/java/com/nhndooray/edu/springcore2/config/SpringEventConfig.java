@@ -15,7 +15,6 @@ public class SpringEventConfig {
     public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
         SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
         eventMulticaster.setTaskExecutor(eventThreadPoolTaskExecutor());
-        // TODO - 04 : errorHandler 등록
         eventMulticaster.setErrorHandler(new MemberEventErrorHandler());
         return eventMulticaster;
     }

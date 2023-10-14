@@ -2,7 +2,6 @@ package com.nhndooray.edu.springcore2.event;
 
 import org.springframework.util.ErrorHandler;
 
-// TODO - 02 : ErrorHandler 인터페이스를 구현하는 클래스
 public class MemberEventErrorHandler implements ErrorHandler {
 
     @Override
