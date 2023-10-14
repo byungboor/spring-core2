@@ -1,5 +1,6 @@
 package com.nhndooray.edu.springcore2.config;
 
+import com.nhndooray.edu.springcore2.event.MemberEventErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ApplicationEventMulticaster;
@@ -7,7 +8,6 @@ import org.springframework.context.event.SimpleApplicationEventMulticaster;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-// TODO - 01
 @Configuration
 public class SpringEventConfig {
 
@@ -15,6 +15,8 @@ public class SpringEventConfig {
     public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
         SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
         eventMulticaster.setTaskExecutor(eventThreadPoolTaskExecutor());
+        // TODO - 04 : errorHandler 등록
+        eventMulticaster.setErrorHandler(new MemberEventErrorHandler());
         return eventMulticaster;
     }
 
