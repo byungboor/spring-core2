@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class SpringCore2Application {
 
+    // TODO - 00 :
     public static void main(String[] args) {
         ApplicationContext ctxt = SpringApplication.run(SpringCore2Application.class, args);
         CreateMemberService service = ctxt.getBean("createMemberService", CreateMemberService.class);
